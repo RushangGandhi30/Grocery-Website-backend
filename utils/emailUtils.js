@@ -4,8 +4,16 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'rdgandhi3003@gmail.com',
-        pass: 'clwo wgyc thej wnpi',
+        pass: 'zmda xmno sxsg zllb',
     },
+});
+
+transporter.verify((error, success) => {
+    if (error) {
+        console.log("SMTP ERROR:", error);
+    } else {
+        console.log("SMTP Connected");
+    }
 });
 
 const sendOtpEmail = async (emailId, otp) => {
@@ -20,6 +28,7 @@ const sendOtpEmail = async (emailId, otp) => {
         console.log(`OTP sent successfully to ${emailId}`);
     } catch (error) {
         console.error("Error sending OTP email:", error);
+          throw error;
     }
 };
 
@@ -35,6 +44,7 @@ const sendThankYouEmail = async (emailId, name) => {
         console.log(`Thank You email sent successfully to ${emailId}`);
     } catch (error) {
         console.error("Error sending Thank You email:", error);
+          throw error;
     }
 };
 
